@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Expense } from '../models/Expense';
 import { Income } from '../models/Income';
 import { Account } from '../models/Account';
+import { Transaction } from '../models/Transaction';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class MoneyApiService {
   headers: any;
 
   constructor(private http: HttpClient) {
-    let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9tb25leS1hcGkubG9jXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNTM2ODcxNTgzLCJleHAiOjE1NDA0NzE1ODMsIm5iZiI6MTUzNjg3MTU4MywianRpIjoic0tXdTFrYmd5SmZaRXlMdSIsInN1YiI6IjNmZTQ1YzY2LWE3NDctNDUzMC1hZmFkLTVlYjhmNmE5NzJhMyIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.GETEqjn4hQpnqAaHcFFHhDU4pwlyLKiFEIHwitmOyXI";
+    let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9tb25leS1hcGkubG9jXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNTM3MDM0MDAwLCJleHAiOjE1NDA2MzQwMDAsIm5iZiI6MTUzNzAzNDAwMCwianRpIjoiRlRUYWY1SmFjd3ZHUVpVRCIsInN1YiI6IjNmZTQ1YzY2LWE3NDctNDUzMC1hZmFkLTVlYjhmNmE5NzJhMyIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.rzo3l2oxq5RLBj-KZV9NqKSFONp9aZtekRTK9AB4yCQ";
     this.headers = new HttpHeaders().set('Accept', 'application/json')
                 .set('api-key', environment.api_key)
                 .set('Authorization', 'Bearer ' + token);
@@ -65,5 +66,21 @@ export class MoneyApiService {
 
   deleteAccount(account): Observable<any> {
     return this.http.delete(environment.api_url + "/accounts/" + account.id, {headers: this.headers});
+  }
+
+  getTransactons(): Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(environment.api_url + "/transactions", {headers: this.headers});
+  }
+
+  editTransaction(transaction: Transaction): Observable<Transaction> {
+    return this.http.put<Transaction>(environment.api_url + "/transactions/" + transaction.id, transaction, {headers: this.headers});
+  }
+
+  addTransaction(transaction: Transaction): Observable<Transaction> {
+    return this.http.post<Transaction>(environment.api_url + "/transactions", transaction, {headers: this.headers});
+  }
+
+  deleteTransaction(transaction): Observable<any> {
+    return this.http.delete(environment.api_url + "/transactions/" + transaction.id, {headers: this.headers});
   }
 }
