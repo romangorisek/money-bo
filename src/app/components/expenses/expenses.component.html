@@ -15,69 +15,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Posojila</td>
-          <td><a href="" class="delete-btn"><i class="fa fa-remove"></i></a></td>
-        </tr>
-        <tr>
-          <td>Malica Roman</td>
-          <td><a href="" class="delete-btn"><i class="fa fa-remove"></i></a></td>
-        </tr>
-        <tr>
-          <td>Higijena</td>
-          <td><a href="" class="delete-btn"><i class="fa fa-remove"></i></a></td>
-        </tr>
-        <tr>
-          <td>Hrana</td>
-          <td><a href="" class="delete-btn"><i class="fa fa-remove"></i></a></td>
-        </tr>
-        <tr>
-          <td>Potovanja</td>
-          <td><a href="" class="delete-btn"><i class="fa fa-remove"></i></a></td>
-        </tr>
-        <tr>
-          <td>Avto vzdrževanje</td>
-          <td><a href="" class="delete-btn"><i class="fa fa-remove"></i></a></td>
-        </tr>
-        <tr>
-          <td>Date denar</td>
-          <td><a href="" class="delete-btn"><i class="fa fa-remove"></i></a></td>
-        </tr>
-        <tr>
-          <td>Telefon</td>
-          <td><a href="" class="delete-btn"><i class="fa fa-remove"></i></a></td>
-        </tr>
-        <tr>
-          <td>Drugo</td>
-          <td><a href="" class="delete-btn"><i class="fa fa-remove"></i></a></td>
-        </tr>
-        <tr>
-          <td>Tina luksuz</td>
-          <td><a href="" class="delete-btn"><i class="fa fa-remove"></i></a></td>
-        </tr>
-        <tr>
-          <td>Provizije banke</td>
-          <td><a href="" class="delete-btn"><i class="fa fa-remove"></i></a></td>
-        </tr>
-        <tr>
-          <td>Roman luksuz</td>
-          <td><a href="" class="delete-btn"><i class="fa fa-remove"></i></a></td>
+        <tr *ngFor="let expense of expenses">
+          <td>{{ expense.title }}</td>
+          <td><span (click)="deleteExpense(expense)" class="delete-btn"><i class="fa fa-remove"></i></span></td>
         </tr>
       </tbody>
     </table>
   
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

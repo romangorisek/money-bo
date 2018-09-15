@@ -15,34 +15,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Tina plača</td>
-          <td><a href="" class="delete-btn"><i class="fa fa-remove"></i></a></td>
-        </tr>
-        <tr>
-          <td>Roman plača</td>
-          <td><a href="" class="delete-btn"><i class="fa fa-remove"></i></a></td>
-        </tr>
-        <tr>
-          <td>Otroški dokladek</td>
-          <td><a href="" class="delete-btn"><i class="fa fa-remove"></i></a></td>
-        </tr>
-        <tr>
-          <td>Drugo</td>
-          <td><a href="" class="delete-btn"><i class="fa fa-remove"></i></a></td>
-        </tr>
-        <tr>
-          <td>Darila</td>
-          <td><a href="" class="delete-btn"><i class="fa fa-remove"></i></a></td>
+        <tr *ngFor="let income of incomes">
+          <td>{{ income.title }}</td>
+          <td><span (click)="deleteIncome(income)" class="delete-btn"><i class="fa fa-remove"></i></span></td>
         </tr>
       </tbody>
     </table>
   
   </div>
-
-
-
-
-
-
-

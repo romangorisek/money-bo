@@ -17,20 +17,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>SKB</td>
-        <td>1000.54</td>
-        <td><a href="" class="delete-btn"><i class="fa fa-remove"></i></a></td>
-      </tr>
-      <tr>
-        <td>Gotovina</td>
-        <td>1000.54</td>
-        <td><a href="" class="delete-btn"><i class="fa fa-remove"></i></a></td>
-      </tr>
-      <tr>
-        <td>Delavska hranilnica</td>
-        <td>1000.54</td>
-        <td><a href="" class="delete-btn"><i class="fa fa-remove"></i></a></td>
+      <tr *ngFor="let account of accounts">
+        <td>{{ account.title }}</td>
+        <td>{{ account.balance }}</td>
+        <td><span class="delete-btn" (click)="deleteAccount(account)"><i class="fa fa-remove"></i></span></td>
       </tr>
     </tbody>
   </table>

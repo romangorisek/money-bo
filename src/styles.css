@@ -30,6 +30,7 @@ body {
 
   .delete-btn,.edit-btn {
     color: rgb(124, 124, 124);
+    cursor: pointer;
   }
   .delete-btn:hover {
     color: #dc3545;
