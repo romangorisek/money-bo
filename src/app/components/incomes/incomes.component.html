@@ -1,8 +1,13 @@
 <div class="container mt-5">
 
     <form class="form-inline mb-5">
-      <input type="text" class="form-control mb-2 mr-sm-5" id="title" name="title" placeholder="Ime">
-      <button type="button" class="btn btn-primary mb-2">Dodaj</button>
+      <input type="hidden" name="id" [(ngModel)]="currentIncome.id">
+      <input type="text" class="form-control mr-sm-5" id="title" name="title" placeholder="Ime" [(ngModel)]="currentIncome.title">
+      <button type="button" class="btn btn-primary mr-3" (click)="save()">
+          <span *ngIf="!edit">Dodaj</span>  
+          <span *ngIf="edit">Shrani</span>
+      </button>
+      <button type="button" *ngIf="edit" (click)="cancelEditMode()" class="btn btn-secondary">Prekliči</button>
     </form>
   
   
@@ -17,7 +22,10 @@
       <tbody>
         <tr *ngFor="let income of incomes">
           <td>{{ income.title }}</td>
-          <td><span (click)="deleteIncome(income)" class="delete-btn"><i class="fa fa-remove"></i></span></td>
+          <td>
+            <span (click)="editMode(income)" class="edit-btn mr-2"><i class="fa fa-pencil"></i></span>
+            <span (click)="deleteIncome(income)" class="delete-btn"><i class="fa fa-remove"></i></span>
+          </td>
         </tr>
       </tbody>
     </table>

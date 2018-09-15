@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { MoneyApiService } from './services/money-api.service';
 
@@ -30,7 +31,8 @@ import { AddTransactionModalComponent } from './components/partials/add-transact
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [MoneyApiService],
   bootstrap: [AppComponent]

@@ -23,6 +23,14 @@ export class MoneyApiService {
     return this.http.get<Expense[]>(environment.api_url + "/expenses", {headers: this.headers});
   }
 
+  editExpense(expense: Expense): Observable<Expense> {
+    return this.http.put<Expense>(environment.api_url + "/expenses/" + expense.id, expense, {headers: this.headers});
+  }
+
+  addExpense(expense: Expense): Observable<Expense> {
+    return this.http.post<Expense>(environment.api_url + "/expenses", expense, {headers: this.headers});
+  }
+
   deleteExpense(expense): Observable<any> {
     return this.http.delete(environment.api_url + "/expenses/" + expense.id, {headers: this.headers});
   }
@@ -31,12 +39,28 @@ export class MoneyApiService {
     return this.http.get<Income[]>(environment.api_url + "/incomes", {headers: this.headers});
   }
 
+  editIncome(income: Income): Observable<Income> {
+    return this.http.put<Income>(environment.api_url + "/incomes/" + income.id, income, {headers: this.headers});
+  }
+
+  addIncome(income: Income): Observable<Income> {
+    return this.http.post<Income>(environment.api_url + "/incomes", income, {headers: this.headers});
+  }
+
   deleteIncome(income): Observable<any> {
     return this.http.delete(environment.api_url + "/incomes/" + income.id, {headers: this.headers});
   }
 
   getAccounts(): Observable<Account[]> {
     return this.http.get<Account[]>(environment.api_url + "/accounts", {headers: this.headers});
+  }
+
+  editAccount(account: Account): Observable<Account> {
+    return this.http.put<Account>(environment.api_url + "/accounts/" + account.id, account, {headers: this.headers});
+  }
+
+  addAccount(account: Account): Observable<Account> {
+    return this.http.post<Account>(environment.api_url + "/accounts", account, {headers: this.headers});
   }
 
   deleteAccount(account): Observable<any> {

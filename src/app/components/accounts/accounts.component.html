@@ -1,9 +1,14 @@
 <div class="container mt-5">
 
   <form class="form-inline mb-5">
-    <input type="text" class="form-control mb-2 mr-sm-5" id="title" name="title" placeholder="Ime">
-    <input type="number" class="form-control mb-2 mr-sm-5" id="balance" name="balance" placeholder="Stanje">
-    <button type="button" class="btn btn-primary mb-2">Dodaj</button>
+    <input type="hidden" name="id" [(ngModel)]="currentAccount.id">
+    <input type="text" class="form-control mr-sm-5" id="title" name="title" placeholder="Ime" [(ngModel)]="currentAccount.title">
+    <input type="number" class="form-control mr-sm-5" id="balance" name="balance" placeholder="Stanje" [(ngModel)]="currentAccount.balance">
+    <button type="button" class="btn btn-primary mr-3" (click)="save()">
+      <span *ngIf="!edit">Dodaj</span>  
+      <span *ngIf="edit">Shrani</span>
+    </button>
+    <button type="button" *ngIf="edit" (click)="cancelEditMode()" class="btn btn-secondary">Prekliči</button>
   </form>
 
 
@@ -20,7 +25,10 @@
       <tr *ngFor="let account of accounts">
         <td>{{ account.title }}</td>
         <td>{{ account.balance }}</td>
-        <td><span class="delete-btn" (click)="deleteAccount(account)"><i class="fa fa-remove"></i></span></td>
+        <td>
+          <span (click)="editMode(account)" class="edit-btn mr-2"><i class="fa fa-pencil"></i></span>
+          <span class="delete-btn" (click)="deleteAccount(account)"><i class="fa fa-remove"></i></span>
+        </td>
       </tr>
     </tbody>
   </table>
