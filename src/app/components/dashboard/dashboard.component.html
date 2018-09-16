@@ -5,12 +5,14 @@
   </div>
 </div>
 
-<div class="mb-3">
+<form class="form-inline mb-5">
   <button class="btn btn-sm btn-outline-secondary dropdown-toggle mr-2"><i class="fa fa-calendar"></i> 1.9.2018</button>
   <button class="btn btn-sm btn-outline-secondary dropdown-toggle mr-2"><i class="fa fa-calendar"></i> 30.9.2018</button>
   <button class="btn btn-sm btn-outline-secondary dropdown-toggle mr-2">Račun</button>
-  <button class="btn btn-sm btn-outline-secondary dropdown-toggle mr-2">Razlog</button>
-</div>
+  <div class="group-form">
+    <app-transaction-type-select [small]="true"></app-transaction-type-select>
+  </div>
+</form>
 
 
 <table class="table">

@@ -1,0 +1,9 @@
+<select class="form-control" [ngClass]="{'form-control-sm' : small}" id="type_id">
+    <option selected disabled>Tip transakcije</option>
+    <optgroup label="Odhodki">
+      <option *ngFor="let expense of expenses" value="{{ expense.id }}">{{ expense.title }}</option>
+    </optgroup>
+    <optgroup label="Prihodki">
+        <option *ngFor="let income of incomes" value="{{ income.id }}">{{ income.title }}</option>
+    </optgroup>
+  </select>
