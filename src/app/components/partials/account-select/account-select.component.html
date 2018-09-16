@@ -1,0 +1,4 @@
+<select class="form-control" [ngClass]="{'form-control-sm' : small}" id="account_id">
+    <option selected disabled>Račun</option>
+    <option *ngFor="let account of accounts" value="{{ account.id }}">{{ account.title }}</option>
+  </select>

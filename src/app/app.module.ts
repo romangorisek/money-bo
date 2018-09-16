@@ -16,6 +16,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddTransactionModalComponent } from './components/partials/add-transaction-modal/add-transaction-modal.component';
 import { TransactionTypeSelectComponent } from './components/partials/transaction-type-select/transaction-type-select.component';
+import { AccountSelectComponent } from './components/partials/account-select/account-select.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { TransactionTypeSelectComponent } from './components/partials/transactio
     NotFoundComponent,
     DashboardComponent,
     AddTransactionModalComponent,
-    TransactionTypeSelectComponent
+    TransactionTypeSelectComponent,
+    AccountSelectComponent
   ],
   imports: [
     BrowserModule,
