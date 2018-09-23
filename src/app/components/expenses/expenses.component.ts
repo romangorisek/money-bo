@@ -60,7 +60,7 @@ export class ExpensesComponent implements OnInit {
     });
   }
 
-  emptyExpense() {
+  emptyExpense(): Expense {
     let expense = {
       id: "",
       title: ""

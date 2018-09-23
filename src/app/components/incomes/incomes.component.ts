@@ -60,7 +60,7 @@ export class IncomesComponent implements OnInit {
     });
   }
 
-  emptyIncome() {
+  emptyIncome(): Income {
     let emptyIncome = {
       id: "",
       title: ""

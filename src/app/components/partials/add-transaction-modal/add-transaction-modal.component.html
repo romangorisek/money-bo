@@ -8,19 +8,26 @@
         </button>
       </div>
       <div class="modal-body">
-          <form>
-              <div class="form-group">
-                <app-transaction-type-select></app-transaction-type-select>
-              </div>
-              <div class="form-group">
-                  <app-account-select></app-account-select>
-              </div>
-              <button class="btn btn-outline-secondary btn-block dropdown-toggle mb-2" id="done_on"><i class="fa fa-calendar"></i> 30.9.2018</button>
-              <input type="number" class="form-control mb-2 mr-sm-5" id="amount" name="amount" placeholder="Znesek">
-            </form>
+        <form>
+            
+          <div class="form-group">
+            <app-transaction-type-select></app-transaction-type-select>
+          </div>
+          
+          <div class="form-group">
+              <app-account-select></app-account-select>
+          </div>
+                    
+          <app-datepicker [gfclasses]="'mb-3'" [placeholder]="'Opravljeno dne'"></app-datepicker>
+
+          <input [(ngModel)]="currentTransaction.amount" type="number" class="form-control mb-2 mr-sm-5" id="amount" name="amount" placeholder="Znesek">
+          
+          <input [(ngModel)]="currentTransaction.id" type="hidden" id="id" name="id" placeholder="Znesek">
+      
+        </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary btn-sm">Dodaj</button>
+        <button type="button" class="btn btn-primary btn-sm" (click)="save()">Dodaj</button>
       </div>
     </div>
   </div>

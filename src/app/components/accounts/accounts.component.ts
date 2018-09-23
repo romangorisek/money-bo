@@ -60,7 +60,7 @@ export class AccountsComponent implements OnInit {
     });
   }
 
-  emptyAccount() {
+  emptyAccount(): Account {
     let emptyAccount = {
       id: "",
       title: "",

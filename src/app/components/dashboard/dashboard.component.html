@@ -6,14 +6,19 @@
 </div>
 
 <form class="form-inline mb-5">
-  <button class="btn btn-sm btn-outline-secondary dropdown-toggle mr-2"><i class="fa fa-calendar"></i> 1.9.2018</button>
-  <button class="btn btn-sm btn-outline-secondary dropdown-toggle mr-2"><i class="fa fa-calendar"></i> 30.9.2018</button>
+  
+  <app-datepicker class="mr-2" [small]="true" [placeholder]="'Od'"></app-datepicker>
+  
+  <app-datepicker class="mr-2" [small]="true" [placeholder]="'Do'"></app-datepicker>
+
   <div class="group-form">
-      <app-account-select [small]="true" class="mr-2"></app-account-select>
-    </div>
+    <app-account-select [small]="true" class="mr-2"></app-account-select>
+  </div>
+  
   <div class="group-form">
     <app-transaction-type-select [small]="true"></app-transaction-type-select>
   </div>
+
 </form>
 
 
@@ -28,105 +33,17 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Tina plača</td>
-        <td>13.9.2018</td>
-        <td>Delavska hranilnica</td>
-        <td>2000.00</td>
+      <tr *ngFor="let transaction of transactions">
+        <td>{{ getTransactionTypeNameById(transaction.type_id) }}</td>
+        <td>{{ transaction.done_on | date : "d.M.yyyy" }}</td>
+        <td>{{ getAccountNameById(transaction.account_id) }}</td>
+        <td [ngClass]="transaction.amount >= 0 ? 'text-success' : 'text-danger'">{{ transaction.amount }}</td>
         <td>
-          <a href="" class="edit-btn"><i class="fa fa-pencil mr-2"></i></a>
-          <a href="" class="delete-btn"><i class="fa fa-remove"></i></a>
-        </td>
-      </tr>
-      <tr>
-        <td>Tina plača</td>
-        <td>13.9.2018</td>
-        <td>Delavska hranilnica</td>
-        <td>2000.00</td>
-        <td>
-          <a href="" class="edit-btn"><i class="fa fa-pencil mr-2"></i></a>
-          <a href="" class="delete-btn"><i class="fa fa-remove"></i></a>
-        </td>
-      </tr>
-      <tr>
-        <td>Tina plača</td>
-        <td>13.9.2018</td>
-        <td>Delavska hranilnica</td>
-        <td>2000.00</td>
-        <td>
-          <a href="" class="edit-btn"><i class="fa fa-pencil mr-2"></i></a>
-          <a href="" class="delete-btn"><i class="fa fa-remove"></i></a>
-        </td>
-      </tr>
-      <tr>
-        <td>Tina plača</td>
-        <td>13.9.2018</td>
-        <td>Delavska hranilnica</td>
-        <td>2000.00</td>
-        <td>
-          <a href="" class="edit-btn"><i class="fa fa-pencil mr-2"></i></a>
-          <a href="" class="delete-btn"><i class="fa fa-remove"></i></a>
-        </td>
-      </tr>
-      <tr>
-        <td>Tina plača</td>
-        <td>13.9.2018</td>
-        <td>Delavska hranilnica</td>
-        <td>2000.00</td>
-        <td>
-          <a href="" class="edit-btn"><i class="fa fa-pencil mr-2"></i></a>
-          <a href="" class="delete-btn"><i class="fa fa-remove"></i></a>
-        </td>
-      </tr>
-      <tr>
-        <td>Tina plača</td>
-        <td>13.9.2018</td>
-        <td>Delavska hranilnica</td>
-        <td>2000.00</td>
-        <td>
-          <a href="" class="edit-btn"><i class="fa fa-pencil mr-2"></i></a>
-          <a href="" class="delete-btn"><i class="fa fa-remove"></i></a>
-        </td>
-      </tr>
-      <tr>
-        <td>Tina plača</td>
-        <td>13.9.2018</td>
-        <td>Delavska hranilnica</td>
-        <td>2000.00</td>
-        <td>
-          <a href="" class="edit-btn"><i class="fa fa-pencil mr-2"></i></a>
-          <a href="" class="delete-btn"><i class="fa fa-remove"></i></a>
-        </td>
-      </tr>
-      <tr>
-        <td>Tina plača</td>
-        <td>13.9.2018</td>
-        <td>Delavska hranilnica</td>
-        <td>2000.00</td>
-        <td>
-          <a href="" class="edit-btn"><i class="fa fa-pencil mr-2"></i></a>
-          <a href="" class="delete-btn"><i class="fa fa-remove"></i></a>
-        </td>
-      </tr>
-      <tr>
-        <td>Tina plača</td>
-        <td>13.9.2018</td>
-        <td>Delavska hranilnica</td>
-        <td>2000.00</td>
-        <td>
-          <a href="" class="edit-btn"><i class="fa fa-pencil mr-2"></i></a>
-          <a href="" class="delete-btn"><i class="fa fa-remove"></i></a>
-        </td>
-      </tr>
-      <tr>
-        <td>Tina plača</td>
-        <td>13.9.2018</td>
-        <td>Delavska hranilnica</td>
-        <td>2000.00</td>
-        <td>
-          <a href="" class="edit-btn"><i class="fa fa-pencil mr-2"></i></a>
-          <a href="" class="delete-btn"><i class="fa fa-remove"></i></a>
+          <span (click)="editMode(transaction)" class="edit-btn"><i class="fa fa-pencil mr-2"></i></span>
+          <span (click)="deleteTransaction(transaction)" class="delete-btn"><i class="fa fa-remove"></i></span>
         </td>
       </tr>
     </tbody>
   </table>
+
+  <app-add-transaction-modal [(currentTransaction)]="currentTransaction"></app-add-transaction-modal>

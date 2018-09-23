@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Transaction } from '../../../models/Transaction';
 
 @Component({
   selector: 'app-add-transaction-modal',
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-transaction-modal.component.css']
 })
 export class AddTransactionModalComponent implements OnInit {
-
+  @Input() currentTransaction: Transaction;
+  
   constructor() { }
 
   ngOnInit() {
   }
-
 }

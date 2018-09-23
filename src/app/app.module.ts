@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { OwlDateTimeModule } from 'ng-pick-datetime';
+import { OwlMomentDateTimeModule } from 'ng-pick-datetime-moment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MoneyApiService } from './services/money-api.service';
 
@@ -17,6 +20,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddTransactionModalComponent } from './components/partials/add-transaction-modal/add-transaction-modal.component';
 import { TransactionTypeSelectComponent } from './components/partials/transaction-type-select/transaction-type-select.component';
 import { AccountSelectComponent } from './components/partials/account-select/account-select.component';
+import { DatepickerComponent } from './components/partials/datepicker/datepicker.component';
 
 @NgModule({
   declarations: [
@@ -30,13 +34,17 @@ import { AccountSelectComponent } from './components/partials/account-select/acc
     DashboardComponent,
     AddTransactionModalComponent,
     TransactionTypeSelectComponent,
-    AccountSelectComponent
+    AccountSelectComponent,
+    DatepickerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    OwlDateTimeModule,
+    OwlMomentDateTimeModule,
+    BrowserAnimationsModule
   ],
   providers: [MoneyApiService],
   bootstrap: [AppComponent]

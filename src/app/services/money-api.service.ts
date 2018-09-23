@@ -68,7 +68,7 @@ export class MoneyApiService {
     return this.http.delete(environment.api_url + "/accounts/" + account.id, {headers: this.headers});
   }
 
-  getTransactons(): Observable<Transaction[]> {
+  getTransactions(): Observable<Transaction[]> {
     return this.http.get<Transaction[]>(environment.api_url + "/transactions", {headers: this.headers});
   }
 

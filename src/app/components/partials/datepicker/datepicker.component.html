@@ -1,0 +1,14 @@
+<div class="group-form {{ gfclasses }}">
+  <div class="input-group">
+    <input  class="form-control"
+            [ngClass]="{'form-control-sm' : small}"
+            placeholder="{{ placeholder }}"
+            [owlDateTimeTrigger]="datepicker" [owlDateTime]="datepicker">
+    <div class="input-group-append">
+      <span class="input-group-text">
+        <i class="fa fa-calendar"></i>
+      </span>
+    </div>
+  </div>
+  <owl-date-time [pickerType]="'calendar'" #datepicker></owl-date-time>
+</div>

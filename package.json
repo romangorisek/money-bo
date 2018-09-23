@@ -12,6 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.1.0",
+    "@angular/cdk": "^6.4.7",
     "@angular/common": "^6.1.0",
     "@angular/compiler": "^6.1.0",
     "@angular/core": "^6.1.0",
@@ -24,6 +25,9 @@
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
+    "moment": "^2.22.2",
+    "ng-pick-datetime": "^6.0.16",
+    "ng-pick-datetime-moment": "^1.0.7",
     "popper.js": "^1.14.4",
     "rxjs": "^6.0.0",
     "zone.js": "~0.8.26"
