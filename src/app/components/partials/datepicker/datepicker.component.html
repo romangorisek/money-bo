@@ -1,8 +1,9 @@
-<div class="group-form {{ gfclasses }}">
+<div class="group-form {{ gfclasses }}" [formGroup]="fGroup">
   <div class="input-group">
     <input  class="form-control"
             [ngClass]="{'form-control-sm' : small}"
             placeholder="{{ placeholder }}"
+            [formControlName]="fcName"
             [owlDateTimeTrigger]="datepicker" [owlDateTime]="datepicker">
     <div class="input-group-append">
       <span class="input-group-text">

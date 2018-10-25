@@ -1,9 +1,11 @@
-<select class="form-control" [ngClass]="{'form-control-sm' : small}" id="type_id">
-    <option selected disabled>Tip transakcije</option>
+<span [formGroup]="fGroup">
+  <select formControlName="type_id" class="form-control" [ngClass]="{'form-control-sm' : small}">
+    <option selected [hidden]="hidePlaceholder" value="">{{placeholderText}}</option>
     <optgroup label="Odhodki">
-      <option *ngFor="let expense of expenses" value="{{ expense.id }}">{{ expense.title }}</option>
-    </optgroup>
-    <optgroup label="Prihodki">
-        <option *ngFor="let income of incomes" value="{{ income.id }}">{{ income.title }}</option>
-    </optgroup>
-  </select>
+        <option *ngFor="let expense of expenses" value="{{ expense.id }}">{{ expense.title }}</option>
+      </optgroup>
+      <optgroup label="Prihodki">
+          <option *ngFor="let income of incomes" value="{{ income.id }}">{{ income.title }}</option>
+      </optgroup>
+    </select>
+</span>

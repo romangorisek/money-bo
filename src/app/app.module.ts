@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { OwlDateTimeModule } from 'ng-pick-datetime';
 import { OwlMomentDateTimeModule } from 'ng-pick-datetime-moment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { MoneyApiService } from './services/money-api.service';
 
@@ -44,7 +45,8 @@ import { DatepickerComponent } from './components/partials/datepicker/datepicker
     FormsModule,
     OwlDateTimeModule,
     OwlMomentDateTimeModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [MoneyApiService],
   bootstrap: [AppComponent]

@@ -14,7 +14,7 @@ export class MoneyApiService {
   headers: any;
 
   constructor(private http: HttpClient) {
-    let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9tb25leS1hcGkubG9jXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNTM3MDM0MDAwLCJleHAiOjE1NDA2MzQwMDAsIm5iZiI6MTUzNzAzNDAwMCwianRpIjoiRlRUYWY1SmFjd3ZHUVpVRCIsInN1YiI6IjNmZTQ1YzY2LWE3NDctNDUzMC1hZmFkLTVlYjhmNmE5NzJhMyIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.rzo3l2oxq5RLBj-KZV9NqKSFONp9aZtekRTK9AB4yCQ";
+    let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9tb25leS1hcGkubG9jXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNTQwMzU4MzAwLCJleHAiOjE1NDM5NTgzMDAsIm5iZiI6MTU0MDM1ODMwMCwianRpIjoiQ1dxRFA0RWkzWmNwTEpJQyIsInN1YiI6IjE0MWExYzQyLTJmNDUtNDk3NS04YjY2LWJiZjM3ZDlmY2RmMCIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.FrvA4cYESdFP-jGf6-tF8jKQl-tI3da3neyuiODwmNM";
     this.headers = new HttpHeaders().set('Accept', 'application/json')
                 .set('api-key', environment.api_key)
                 .set('Authorization', 'Bearer ' + token);
@@ -68,8 +68,8 @@ export class MoneyApiService {
     return this.http.delete(environment.api_url + "/accounts/" + account.id, {headers: this.headers});
   }
 
-  getTransactions(): Observable<Transaction[]> {
-    return this.http.get<Transaction[]>(environment.api_url + "/transactions", {headers: this.headers});
+  getTransactions(filters): Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(environment.api_url + "/transactions", {headers: this.headers, params: filters});
   }
 
   editTransaction(transaction: Transaction): Observable<Transaction> {

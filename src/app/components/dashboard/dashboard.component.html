@@ -5,18 +5,22 @@
   </div>
 </div>
 
-<form class="form-inline mb-5">
-  
-  <app-datepicker class="mr-2" [small]="true" [placeholder]="'Od'"></app-datepicker>
-  
-  <app-datepicker class="mr-2" [small]="true" [placeholder]="'Do'"></app-datepicker>
+<form [formGroup]="filterForm" (ngSubmit)="filterDashboard(filterForm.value)" class="form-inline mb-5">
+
+  <app-datepicker [fGroup]="filterForm" fcName="start" class="mr-2" [small]="true" [placeholder]="'Od'"></app-datepicker>
+
+  <app-datepicker [fGroup]="filterForm" fcName="end" class="mr-2" [small]="true" [placeholder]="'Do'"></app-datepicker>
 
   <div class="group-form">
-    <app-account-select [small]="true" class="mr-2"></app-account-select>
+    <app-account-select [fGroup]="filterForm" [small]="true" hidePlaceholder="0" placeholderText="Vsi računi" class="mr-2"></app-account-select>
   </div>
-  
+
   <div class="group-form">
-    <app-transaction-type-select [small]="true"></app-transaction-type-select>
+    <app-transaction-type-select [fGroup]="filterForm" [small]="true" hidePlaceholder="0" placeholderText="Vsi tipi transakcij"></app-transaction-type-select>
+  </div>
+
+  <div class="group-form">
+    <input type="submit" class="btn btn-sm btn-outline-secondary ml-2" value="Išči">
   </div>
 
 </form>
@@ -46,4 +50,4 @@
     </tbody>
   </table>
 
-  <app-add-transaction-modal [(currentTransaction)]="currentTransaction"></app-add-transaction-modal>
+  <app-add-transaction-modal [(currentTransaction)]="currentTransaction" [incomes]="incomes" [expenses]="expenses"></app-add-transaction-modal>

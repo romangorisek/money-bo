@@ -4,8 +4,9 @@ import { MoneyApiService } from '../../services/money-api.service';
 import { Income } from '../../models/Income';
 import { Expense } from '../../models/Expense';
 import { Account } from '../../models/Account';
-
-declare var $: any;
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import * as moment from 'moment';
+declare const $: any;
 
 @Component({
   selector: 'app-dashboard',
@@ -14,21 +15,60 @@ declare var $: any;
 })
 export class DashboardComponent implements OnInit {
   currentTransaction: Transaction = this.emptyTransaction();
+  filterForm: FormGroup;
+  filterPost: any;
   edit: boolean = false;
   transactions: Transaction[] = [];
   incomes: Income[] = [];
   expenses: Expense[] = [];
   accounts: Account[] = [];
-  start: any = "1.9.2018";
-  end: any = "26.9.2018";
 
-  constructor(private moneyApi: MoneyApiService) { }
+  constructor(private moneyApi: MoneyApiService, private fb: FormBuilder) {
+    this.filterForm = fb.group({
+      'start': new FormControl(moment().startOf('month')),
+      'end': new FormControl(moment().endOf('month')),
+      'account_id': new FormControl(""),
+      'type_id': new FormControl("")
+    });
+  }
 
   ngOnInit() {
     this.moneyApi.getIncomes().subscribe(incomes => this.incomes = incomes);
     this.moneyApi.getExpenses().subscribe(expenses => this.expenses = expenses);
     this.moneyApi.getAccounts().subscribe(accounts => this.accounts = accounts);
-    this.moneyApi.getTransactions().subscribe(transactions => this.transactions = transactions);
+    this.getInitialTransactions();
+  }
+
+  getInitialTransactions() {
+    let filters = {
+      start: moment().startOf('month').format("YYYY-MM-DD 23:59:59"),
+      end: moment().endOf('month').format("YYYY-MM-DD 23:59:59")
+    }
+    this.moneyApi.getTransactions(filters).subscribe(transactions => this.transactions = transactions);
+  }
+
+  filterDashboard(filters) {
+    this.moneyApi.getTransactions(this.parseFilters(filters)).subscribe(transactions => this.transactions = transactions);
+  }
+
+  parseFilters(filters) {
+    if (typeof filters.start !== "undefined") {
+      if (typeof filters.start === "string") filters.start = moment(filters.start);
+      filters.start = filters.start.format("YYYY-MM-DD 23:59:59");
+    }
+    if (typeof filters.end !== "undefined") {
+      if (typeof filters.end === "string") filters.end = moment(filters.end);
+      filters.end = filters.end.format("YYYY-MM-DD 23:59:59");
+    }
+    if (typeof filters.type_id !== "undefined") {
+      filters.transactionType = filters.type_id;
+      delete filters.type_id;
+    }
+    if (typeof filters.account_id !== "undefined") {
+      filters.account = filters.account_id;
+      delete filters.account_id;
+    }
+    return filters;
   }
 
   deleteTransaction(transaction: Transaction) {
@@ -43,35 +83,6 @@ export class DashboardComponent implements OnInit {
     this.currentTransaction = transaction;
     this.edit = true;
     $("#addTransactionModal").modal('show');
-  }
-
-  cancelEditMode() {
-    this.edit =  false;
-    this.currentTransaction = this.emptyTransaction();
-  }
-
-  save() {
-    if (this.currentTransaction.id.length) {
-      this.updateCurrent();
-    } else {
-      this.addCurrent();
-    }
-  }
-
-  updateCurrent() {
-    this.moneyApi.editTransaction(this.currentTransaction).subscribe(transaction => {
-      this.transactions = this.transactions.filter(obj => obj.id !== transaction.id);
-      this.transactions.unshift(transaction);
-      this.currentTransaction = this.emptyTransaction();
-      this.edit = false;
-    });
-  }
-  
-  addCurrent() {
-    this.moneyApi.addTransaction(this.currentTransaction).subscribe(transaction => {
-      this.transactions.unshift(transaction);
-      this.currentTransaction = this.emptyTransaction();
-    });
   }
 
   emptyTransaction(): Transaction {
