@@ -9,7 +9,7 @@
         </div>
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Geslo" formControlName="password" [ngClass]="{ 'is-invalid': submitted && loginForm.controls.password.errors }">
+        <input type="password" class="form-control" placeholder="Geslo" formControlName="password" [ngClass]="{ 'is-invalid': submitted && loginForm.controls.password.errors }">
         <div *ngIf="submitted && loginForm.controls.password.errors" class="invalid-feedback">
             <div *ngIf="loginForm.controls.password.errors.required">Geslo je obvezno polje</div>
         </div>
