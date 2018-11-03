@@ -10,7 +10,7 @@ import { UserService } from './services/user.service';
 export class AppComponent {
   title = 'money-bo';
 
-  constructor(private router: Router, private user: UserService) {
+  constructor(private router: Router, public user: UserService) {
   }
 
   logout() {
