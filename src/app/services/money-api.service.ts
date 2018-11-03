@@ -89,6 +89,6 @@ export class MoneyApiService {
   }
 
   login(userData): Observable<any> {
-    return this.http.post(environment.api_url + "/auth/login", userData);
+    return this.http.post(environment.api_url + "/auth/login", userData, {headers: new HttpHeaders().set('Accept', 'application/json').set('api-key', environment.api_key)});
   }
 }
