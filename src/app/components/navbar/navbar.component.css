@@ -48,3 +48,16 @@
     font-size: .75rem;
     text-transform: uppercase;
   }
+
+  .navbar-brand {
+    min-width: 115px;
+  }
+
+  @media only screen and (max-width: 1100px) {
+    .sidebar {
+      width: 52px;
+    }
+    .navbar-label {
+      display: none;
+    }
+}

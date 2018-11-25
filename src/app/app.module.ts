@@ -22,6 +22,8 @@ import { AddTransactionModalComponent } from './components/partials/add-transact
 import { TransactionTypeSelectComponent } from './components/partials/transaction-type-select/transaction-type-select.component';
 import { AccountSelectComponent } from './components/partials/account-select/account-select.component';
 import { DatepickerComponent } from './components/partials/datepicker/datepicker.component';
+import { TransactionComponent } from './components/transaction/transaction.component';
+import { TransactionFormComponent } from './components/partials/transaction-form/transaction-form.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { DatepickerComponent } from './components/partials/datepicker/datepicker
     AddTransactionModalComponent,
     TransactionTypeSelectComponent,
     AccountSelectComponent,
-    DatepickerComponent
+    DatepickerComponent,
+    TransactionComponent,
+    TransactionFormComponent
   ],
   imports: [
     BrowserModule,

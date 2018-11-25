@@ -1,0 +1,22 @@
+<form [formGroup]="addTransactionForm" (ngSubmit)="save(addTransactionForm.value)">
+  <div class="modal-body">
+
+    <div class="form-group">
+      <app-transaction-type-select [fGroup]="addTransactionForm"></app-transaction-type-select>
+    </div>
+
+    <div class="form-group">
+        <app-account-select [fGroup]="addTransactionForm"></app-account-select>
+    </div>
+
+    <app-datepicker [fGroup]="addTransactionForm" fcName="done_on" [gfclasses]="'mb-3'" [placeholder]="'Opravljeno dne'"></app-datepicker>
+
+    <input formControlName="amount" type="number" class="form-control mb-2 mr-sm-5" [ngClass]="amountType" placeholder="Znesek">
+
+    <input formControlName="id" type="hidden">
+
+  </div>
+  <div class="modal-footer">
+    <input type="submit" class="btn btn-primary btn-sm" value="Shrani"/>
+  </div>
+</form>

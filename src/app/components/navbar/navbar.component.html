@@ -1,28 +1,44 @@
-<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+<nav class="col-md-2 d-md-block bg-light sidebar">
   <div class="sidebar-sticky">
     <ul class="nav flex-column">
       <li class="nav-item">
         <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-          <i class="fa fa-home"></i>
-          Pregled
+          <span title="Pregled"><i class="fa fa-home"></i></span>
+          <span class="navbar-label">
+            Pregled
+          </span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/transaction" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <span title="Nova transakcija"><i class="small fa fa-money"></i></span>
+          <span class="navbar-label">
+            Nova transakcija
+          </span>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/expenses" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-          <i class="small fa fa-minus"></i><i class="fa fa-euro"></i>
-          Odhodki
+          <span title="Odhodki"><i class="small fa fa-minus"></i><i class="fa fa-euro"></i></span>
+          <span class="navbar-label">
+            Odhodki
+          </span>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/incomes" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-          <i class="small fa fa-plus"></i><i class="fa fa-euro"></i>
-          Prihodki
+          <span title="Prihodki"><i class="small fa fa-plus"></i><i class="fa fa-euro"></i></span>
+          <span class="navbar-label">
+            Prihodki
+          </span>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/accounts" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-          <i class="fa fa-credit-card"></i>
-          Računi
+          <span title="Računi"><i class="fa fa-credit-card"></i></span>
+          <span class="navbar-label">
+            Računi
+          </span>
         </a>
       </li>
     </ul>

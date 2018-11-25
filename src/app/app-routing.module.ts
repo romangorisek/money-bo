@@ -6,6 +6,7 @@ import { IncomesComponent } from './components/incomes/incomes.component';
 import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ExpensesComponent } from './components/expenses/expenses.component';
+import { TransactionComponent } from './components/transaction/transaction.component';
 import { AuthGuardService } from './guards/auth-guard.service';
 
 
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: "accounts", component: AccountsComponent, canActivate: [AuthGuardService]},
   {path: "incomes", component: IncomesComponent, canActivate: [AuthGuardService]},
   {path: "expenses", component: ExpensesComponent, canActivate: [AuthGuardService]},
+  {path: "transaction", component: TransactionComponent, canActivate: [AuthGuardService]},
   {path: "login", component: LoginComponent},
   {path: "**", component: NotFoundComponent}
 ];
