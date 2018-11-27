@@ -57,13 +57,17 @@ export class TransactionFormComponent implements OnInit {
 
   updateTransaction(formData) {
     this.moneyApi.editTransaction(this.parseDataForApi(formData)).subscribe(transaction => {
-      this.saved.emit('saved');
+      if (!transaction.error) {
+        this.saved.emit('saved');
+      }
     });
   }
 
   addTransaction(formData) {
     this.moneyApi.addTransaction(this.parseDataForApi(formData)).subscribe(transaction => {
-      this.saved.emit('saved');
+      if (!transaction.error) {
+        this.saved.emit('saved');
+      }
     });
   }
 

@@ -1,7 +1,12 @@
 
+<div class="alert alert-success fade show mx-4" role="alert">
+    Transakcija dodana
+</div>
+
 <app-transaction-form 
 [currentTransaction]="currentTransaction"
 [incomes]="incomes"
 [expenses]="expenses"
+(saved)="onSaved()"
 >
 </app-transaction-form>

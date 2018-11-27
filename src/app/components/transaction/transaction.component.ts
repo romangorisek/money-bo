@@ -4,6 +4,7 @@ import { Income } from 'src/app/models/Income';
 import { Expense } from 'src/app/models/Expense';
 import { Account } from 'src/app/models/Account';
 import { MoneyApiService } from 'src/app/services/money-api.service';
+declare const $: any;
 
 @Component({
   selector: 'app-transaction',
@@ -33,5 +34,13 @@ export class TransactionComponent implements OnInit {
       account_id: ""
     }
     return transaction;
+  }
+
+  onSaved() {
+    this.currentTransaction = this.emptyTransaction();
+    $('.alert').show();
+    setTimeout(function() {
+      $('.alert').hide();
+    }, 2000);
   }
 }
