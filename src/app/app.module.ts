@@ -24,6 +24,8 @@ import { AccountSelectComponent } from './components/partials/account-select/acc
 import { DatepickerComponent } from './components/partials/datepicker/datepicker.component';
 import { TransactionComponent } from './components/transaction/transaction.component';
 import { TransactionFormComponent } from './components/partials/transaction-form/transaction-form.component';
+import { AccountSumComponent } from './components/partials/account-sum/account-sum.component';
+import { BulletChartComponent } from './components/partials/bullet-chart/bullet-chart.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { TransactionFormComponent } from './components/partials/transaction-form
     AccountSelectComponent,
     DatepickerComponent,
     TransactionComponent,
-    TransactionFormComponent
+    TransactionFormComponent,
+    AccountSumComponent,
+    BulletChartComponent
   ],
   imports: [
     BrowserModule,

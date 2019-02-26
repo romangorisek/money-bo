@@ -1,0 +1,33 @@
+
+  <div>
+    <div class="row">
+      <div class="col-6 text-right">
+        Varčevanje:      
+      </div>
+      <div class="col-6 text-center">
+        {{ sum_savings | number : '.2-2' }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 text-right">
+        <b>Ostalo:</b>
+      </div>
+      <div class="col-6 text-center">
+        <b>{{ sum_other | number : '.2-2' }}</b>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 text-right">
+        Skupaj:      
+      </div>
+      <div class="col-6 text-center">
+        {{ sum_total | number : '.2-2' }}
+      </div>
+    </div>
+  </div>
+

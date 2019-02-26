@@ -11,6 +11,13 @@
     <button type="button" *ngIf="edit" (click)="cancelEditMode()" class="btn btn-secondary">Prekliči</button>
   </form>
 
+  <hr>
+  <div class="row" *ngIf="accounts.length">
+    <div class="col-6"></div>
+    <div class="col-6 mb-4">
+        <app-account-sum [accounts]="accounts"></app-account-sum>
+    </div>
+  </div>
 
 
   <table class="table">
@@ -24,7 +31,7 @@
     <tbody>
       <tr *ngFor="let account of accounts">
         <td>{{ account.title }}</td>
-        <td>{{ account.balance }}</td>
+        <td>{{ account.balance | number : '.2-2' }}</td>
         <td>
           <span (click)="editMode(account)" class="edit-btn mr-2"><i class="fa fa-pencil"></i></span>
           <span class="delete-btn" (click)="deleteAccount(account)"><i class="fa fa-remove"></i></span>

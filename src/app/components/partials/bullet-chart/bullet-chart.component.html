@@ -1,0 +1,12 @@
+<div class="row mb-2">
+  <div class="col">
+    <h5>{{chartData.title}}</h5>
+  </div>
+  <div class="col text-right">
+    <small>
+      Trenutna poraba: {{chartData.sum | number : '.2-2'}} <br>
+      Budget: {{chartData.budget | number : '.2-2'}}
+    </small>
+  </div>
+</div>
+<div [attr.id]="chartId"></div>
